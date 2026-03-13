@@ -10,14 +10,6 @@ An interactive geospatial visualization of Singapore's hawker centres with searc
 
 The app follows a full-stack architecture with three layers:
 
-```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│   React +    │────▶│   FastAPI    │────▶│   Supabase   │
-│   Leaflet    │◀────│   (Python)   │◀────│  (PostgreSQL) │
-│   Frontend   │     │   Backend    │     │   Database   │
-└──────────────┘     └──────────────┘     └──────────────┘
-```
-
 - **Frontend** — React 18 + Vite + TypeScript. Uses `react-leaflet` for the interactive map and `react-leaflet-cluster` for marker clustering. Sidebar has search, region filter chips, stats, and a scrollable hawker list.
 - **Backend** — FastAPI (Python) REST API with endpoints for listing hawkers (search/filter), regions, and stats. Queries Supabase via the official Python SDK.
 - **Database** — Supabase (PostgreSQL) stores hawker centre records with coordinates, region, and stall count. Row Level Security is enabled with a public read policy.
