@@ -89,7 +89,6 @@ pytest test_main.py -v
 - Hawker data was compiled from data.gov.sg. Coordinates and stall counts are approximate.
 - Regions map to Singapore's 5 planning areas: Central, East, West, North, North-East.
 - The dataset is small enough (~80 records) that fetching everything in one call is acceptable — pagination is out of scope.
-- Routing through a Python backend is preferred over direct Supabase client queries, to keep API keys off the frontend.
 
 ### Challenges
 
@@ -97,4 +96,3 @@ pytest test_main.py -v
 - **Leaflet CSS** — Leaflet's stylesheet must be loaded via CDN in `index.html`; bundling it normally breaks tile and marker rendering.
 - **Testing map components** — Leaflet manipulates the DOM directly and doesn't work in jsdom (the default Vitest environment). Map components had to be mocked out in tests to avoid errors.
 - **Map–sidebar sync** — Keeping the selected hawker in sync between the sidebar list and the map marker required careful state lifting; markers inside clusters are not directly accessible until the cluster is expanded.
-- **Coordinate data quality** — Several hawker centres from the source dataset had missing or inaccurate coordinates that required manual correction before they could be plotted correctly.
